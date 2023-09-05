@@ -1,0 +1,65 @@
+<app-header [show]="true"></app-header>
+<app-middle title="File upload" description=""></app-middle>
+<main>
+    <section>
+        <div class="container">
+            <div class="mt-5 mb-5 change-div">
+
+                <div class="example-header d-flex align-items-center justify-content-between flex-wrap">
+                    <mat-form-field class="w-75">
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Email ,Firstname ,Lastname,phone">
+                    </mat-form-field>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <button class="mx-2 my-2" mat-raised-button color="primary" (click)="delete()">Delete
+                            duplicate</button>
+                        <button class="mx-2 my-2" mat-raised-button color="primary"
+                            (click)="download()">Download</button>
+
+                    </div>
+                </div>
+                <div class="example-container mat-elevation-z8">
+
+                    <mat-table [dataSource]="dataSource" matSort>
+                        <ng-container matColumnDef="Srno">
+                            <mat-header-cell *matHeaderCellDef> Srno
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let item; let j = index"> {{ j + 1 }} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="EMAIL">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Email
+                            </mat-header-cell>
+
+                            <mat-cell *matCellDef="let row"> {{ row['EMAIL'] ? row['EMAIL']: '-'}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="FIRST NAME">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> FIRST NAME </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{ row['FIRST NAME'] ? row['FIRST NAME']: '-'}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="LAST NAME">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{ row['LAST NAME'] ? row['LAST NAME']: '-'}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="PHONE">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Mobile number </mat-header-cell>
+                            <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row['PHONE'] ?
+                                row['PHONE']:'-'}}
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </mat-row>
+                    </mat-table>
+                    <mat-paginator (page)="getServerData($event)" [length]="1000" [pageSizeOptions]="[5, 10, 25, 100]">
+                    </mat-paginator>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-loader" [fullScreen]="true">
+    <p style="color: white"> {{message}} </p>
+</ngx-spinner>

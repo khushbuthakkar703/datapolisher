@@ -1,0 +1,25 @@
+.notification_main {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom: 0;
+}
+
+.notification_bottom {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.notification_show {
+    border: 1px solid #ccc;
+    border-bottom: 0.1;
+    align-items: center;
+    display: flex;
+    padding: 20px;
+}
+mat-icon {
+    cursor: pointer;
+}

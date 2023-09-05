@@ -1,0 +1,122 @@
+<header>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/dashboard"><img src="../../../assets/logo.png" alt="" /></a>
+
+                <button *ngIf="show" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"> ☰ </span>
+                </button>
+
+
+                <div *ngIf="show" class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center pt-4">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Query
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="query/tn-query-upload">TN Query Upload</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="query/tn-disconnect-query">TN Query</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Query Summary Report</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="query/query-results">Downloads</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Reports</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Support
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="#">Contact Help Desk</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Submit Schedule</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">User Guides</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Training Videos</a>
+                                </li>
+                            </ul>
+
+                        </li>
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown9" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Welcome cherryvoicedev2 </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown9">
+                                <li style="cursor: pointer;">
+                                    <a class="dropdown-item" routerLink="/account/profile">Profile</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Company</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Users</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/account/checknumber">Mobile number</a>
+                                </li>
+                                <!-- <li>
+                                    <a class="dropdown-item" href="/fileupload">File Upload server</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/fileupload/list">File Upload server list</a>
+                                </li> -->
+
+                                <li>
+                                    <a class="dropdown-item" href="/filedataupload">File Upload</a>
+                                </li>
+                                <!-- <li>
+                                    <a class="dropdown-item" href="/fileupload/list">list</a>
+                                </li> -->
+                                <li>
+                                    <a class="dropdown-item" href="/notification/list">Notification</a>
+                                </li>
+                                <li (click)="logout()">
+                                    <a class="dropdown-item" href="javascript:void(0);">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/notification/list">
+                                <p *ngIf="shownnotification" class="m-0">
+                                    <mat-icon matBadge={{totallength}} matBadgeColor="warn">notifications</mat-icon>
+                                </p>
+
+                                <p *ngIf="!shownnotification" class="m-0">
+                                    <mat-icon matBadgeColor="warn">notifications</mat-icon>
+                                </p>
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+        </nav>
+    </div>
+
+</header>

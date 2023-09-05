@@ -1,0 +1,59 @@
+<app-header [show]="false"></app-header>
+<main>
+    <section>
+        <div class="container">
+            <div class="login-div">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="form-header">
+                        <h6>Login to RND</h6>
+                    </div>
+                    <p class="required-fild"><span>*</span> Required</p>
+                    <div class="labels">
+                        <label for="name">Username <span>*</span></label>
+                        <input type="text" tabindex="1" formControlName="name" name="name" id="name" autofocus />
+                        <div *ngIf="submitted && f.name.errors" class="error">
+                            <div *ngIf="f.name.errors.required">Name is required</div>
+                        </div>
+                    </div>
+                    <div class="labels">
+                        <label for="password">Password <span>*</span></label>
+                        <input type="password" tabindex="2" formControlName="password" name="password" id="password" />
+                        <div *ngIf="submitted && f.password.errors" class="error">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <!-- <div *ngIf="f.password.errors.minlength">Password must be at least 7 characters</div> -->
+                        </div>
+                    </div>
+                    <div class="sub-btn">
+                        <button type="submit" tabindex="3" [disabled]="!loginForm.valid">Login</button>
+                    </div>
+                </form>
+                <div class="forgot-div">
+                    <a href="/register" tabindex="4">Don't have account ?</a>
+                </div>
+                <div class="forgot-div">
+                    <a href="forgot-username" tabindex="5">Forgot Username ?</a>
+                    <a href="forgot-password" tabindex="6">Forgot Password ?</a>
+                </div>
+                <div class="warning-div">
+                    <p>
+                        <span>By Logging in to the RND you are agreeing to the
+                            following:</span>
+                        The user agrees and warrants that it, and any agent acting on its
+                        behalf, will access and use the reassigned numbers database solely
+                        to determine whether a number has been permanently disconnected
+                        since a date selected by the user, or its agent, for the purpose
+                        of making lawful calls or sending lawful texts. The date selected
+                        will be a date that the user, or its agent, reasonably and in good
+                        faith believes the person it intends to call or text could be
+                        reached at that number. By using this database, you are accessing
+                        a U.S. Government system. As such, system usage may be monitored,
+                        recorded, and subject to audit. Use of the system indicates
+                        consent to monitoring and recording. Unauthorized use of the
+                        system is prohibited and subject to criminal and civil penalties.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>

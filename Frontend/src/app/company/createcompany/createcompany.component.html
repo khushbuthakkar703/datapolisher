@@ -1,0 +1,99 @@
+<app-header [show]="true"></app-header>
+<app-middle title="Companies" description="Companies"></app-middle>
+<main>
+    <section class="edit-profile py-5">
+        <div class="container">
+            <div class="login-div mt-0">
+                <h2 class="fw-light">Create Company</h2>
+                <form [formGroup]="CreateComapny" (ngSubmit)="onSubmit()">
+                    <p class="required-fild"><span>*</span> Required</p>
+                    <div class="labels">
+                        <label for="name">Companyname <span>*</span></label>
+                        <input type="text" formControlName="Comapnyname" placeholder="Please enter Company name"
+                            name="text" id="name" tabindex="1" autofocus />
+                        <div *ngIf="submitted && f.Comapnyname.errors" class="error">
+                            <div *ngIf="f.Comapnyname.errors.required">Company name is required</div>
+
+                        </div>
+                    </div>
+                    <div class="labels d-flex">
+                        <div class="me-2" style="width:35%;">
+                            <label for="name">Country <span>*</span></label>
+                            <select (change)="countrychange($event)" tabindex="1" formControlName="Countryname">
+                                <option value="">Select country</option>
+                                <option *ngFor="let itemdata of countrydata" [value]="itemdata.isoCode">
+                                    {{itemdata.name }}</option>
+
+                            </select>
+                            <div *ngIf="submitted && f.Countryname.errors" class="error">
+                                <div *ngIf="f.Countryname.errors.required">Country is required</div>
+
+                            </div>
+                        </div>
+                        <div class=" me-2" style="width:25%;">
+                            <label for="Middle">State <span>*</span> </label>
+                            <select (change)="statechange($event)" tabindex="3" formControlName="State">
+                                <option value="">Select state</option>
+                                <option *ngFor="let state of statedata" [value]="state.isoCode">{{state.name}}
+                                </option>
+
+                            </select>
+                            <div *ngIf="submitted && f.State.errors" class="error">
+                                <div *ngIf="f.State.errors.required">State is required</div>
+
+                            </div>
+                        </div>
+                        <div style="width:35%;">
+                            <label for="Middle">City <span>*</span></label>
+                            <input type="text" formControlName="City" tabindex="4" placeholder="Please enter City name"
+                                name="text" id="name" />
+                            <div *ngIf="submitted && f.City.errors" class="error">
+                                <div *ngIf="f.City.errors.required">City is required</div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="labels">
+                        <label for="name">Street <span>*</span></label>
+                        <textarea formControlName="Street" tabindex="5" type="text" placeholder="Please enter Street"
+                            class="w-100 h-100" name="text" id="name"></textarea>
+                        <div *ngIf="submitted && f.Street.errors" class="error">
+                            <div *ngIf="f.Street.errors.required">Street is required</div>
+
+                        </div>
+                    </div>
+                    <div class="labels">
+                        <label for="name"> Zip Code<span>*</span></label>
+                        <input type="text" formControlName="zipcode" name="text" (keypress)="numberOnly($event)"
+                            (change)="numberOnly($event)" id="name" placeholder="Please enter zip code" tabindex="6" />
+                        <div *ngIf="submitted && f.zipcode.errors" class="error">
+                            <div *ngIf="f.zipcode.errors.required">Zip code is required</div>
+
+                        </div>
+                    </div>
+
+                    <div class="labels">
+                        <label for="Middle">Company Type <span>*</span></label>
+                        <select formControlName="type" tabindex="7">
+                            <option value="">Select type</option>
+                            <option value="Caller Agent">Caller Agent</option>
+                            <option value="Caller">Caller</option>
+                        </select>
+                        <div *ngIf="submitted && f.zipcode.errors" class="error">
+                            <div *ngIf="f.zipcode.errors.required">Company Type is required</div>
+
+                        </div>
+                    </div>
+                    <p class="text-center mt-4 mb-0">
+                        <span class="btn-group ">
+                            <button class="btn btn-primary" id="submitUserForm" type="submit">Save</button>
+                        </span>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</main>
+<app-footer></app-footer>

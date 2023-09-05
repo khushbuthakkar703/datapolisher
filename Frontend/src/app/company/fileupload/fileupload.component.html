@@ -1,0 +1,22 @@
+<app-header [show]="true"></app-header>
+<app-middle title="File upload" description=""></app-middle>
+<main>
+    <section>
+        <div class="container">
+            <div class="mt-5 mb-5 change-div">
+
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input"
+                        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                        ID="fileInput" (change)="csvuplaod($event)">
+                    <label class="custom-file-label" #labelImport for="fileInput"> Choose
+                        file</label>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-loader" [fullScreen]="true">
+    <p style="color: white"> {{message}} </p>
+</ngx-spinner>

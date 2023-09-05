@@ -1,0 +1,78 @@
+header {
+    min-height: 80px;
+    background-color: rgb(2, 82, 127);
+    box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px -2px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+header a {
+    display: block;
+}
+header a img {
+    width: 50px;
+}
+.login-div {
+    max-width: 400px;
+    margin: 150px auto 50px;
+    padding: 0 10px;
+}
+.navbar {
+    padding: 0;
+}
+.navbar-brand {
+    margin: 0;
+}
+.nav-link {
+    font-size: 1.1rem;
+    display: inline-block;
+    color: #fff;
+    padding-bottom: 31px;
+    margin-bottom: 0;
+    border-bottom: 9px solid transparent;
+    cursor: pointer;
+}
+.nav-link:hover {
+    color: rgb(245, 166, 35);
+    border-color: rgb(245, 166, 35);
+}
+.nav-link:focus {
+    color: rgb(245, 166, 35);
+    border-color: rgb(245, 166, 35);
+}
+.nav-item {
+    margin-left: 20px;
+}
+.dropdown-item {
+    margin: 0;
+    padding: 7px 15px;
+}
+.dropdown-menu {
+    padding: 0;
+}
+.navbar-toggler-icon {
+    width: auto;
+    height: auto;
+    color: #fff;
+}
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+@media only screen and (max-width: 992px) {
+    .navbar {
+        padding: 18px 0;
+    }
+    .nav-item {
+        margin-left: 0;
+    }
+}
+
+.home-div {
+    min-height: 400px;
+    max-width: 640px;
+    margin: auto;
+    p {
+        word-spacing: 2px;
+    }
+}

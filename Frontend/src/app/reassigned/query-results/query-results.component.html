@@ -1,0 +1,74 @@
+<app-header [show]="true"></app-header>
+
+<app-middle title="Downloads"
+    description="Download the result files for your records. The result files will only be available for 45 days from the Create Date. Please note all date times are in Eastern time.">
+</app-middle>
+<main>
+
+    <section>
+        <div class="container">
+            <div class="mt-5 mb-5 change-div">
+                <h2> Downloads</h2>
+                <div class="example-container mat-elevation-z8">
+                    <mat-table [dataSource]="dataSource" matSort>
+
+                        <ng-container matColumnDef="username">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Username
+                            </mat-header-cell>
+
+                            <mat-cell *matCellDef="let row"> {{ row['username'] ? row['username']: '-'}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="type">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{ row['type'] ? row['type']: '-'}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="create_date">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Create Date </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{ row['create_date'] ?( row['create_date'] | date
+                                :'short'): '-'}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="input_file">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>Input Filename </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{ row['input_file'] ? row['input_file']: '-'}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="output_file">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>Output Filename </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{ row['output_file'] ? row['output_file']: '-'}}
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Action">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Download </mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <div class="btn-group " *ngIf="row.type=='TN Query Upload'">
+                                    <button class="btn btn-primary m-auto" type="button"
+                                        (click)="csvdownload(row,'csv')">CSV</button>
+                                    <button class="btn btn-secondary m-auto" type="button"
+                                        (click)="csvdownload(row,'xlsx')">XLSX</button>
+                                </div>
+                                <div class="btn-group " *ngIf="row.type=='Query Summary Report'">
+                                    <button class="btn btn-primary m-auto" (click)="reportdownload(row)"
+                                        type="button">Download</button>
+
+                                </div>
+                                <!-- <mat-icon>cloud_download</mat-icon> -->
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </mat-row>
+                    </mat-table>
+                    <mat-paginator [pageSizeOptions]="[10, 20, 100]">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-loader" [fullScreen]="true">
+    <p style="color: white"> Please wait ... </p>
+</ngx-spinner>

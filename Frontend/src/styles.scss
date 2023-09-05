@@ -1,0 +1,226 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.error {
+  color: red;
+  // margin-bottom: 0.7rem;
+}
+
+//New css
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+/* width */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  background: #33a1fd;
+}
+
+.login-div {
+  max-width: 700px;
+  margin: 150px auto 50px;
+  padding: 0 10px;
+}
+.form-header h6 {
+  font-weight: 300;
+  color: #373f51;
+  font-size: 33px;
+  display: block;
+  letter-spacing: 1px;
+  margin: 0;
+}
+.required-fild {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+.required-fild span {
+  color: red;
+}
+.labels {
+  margin-bottom: 20px;
+}
+.labels label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.labels label span {
+  color: red;
+}
+.labels input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  font-weight: 300;
+  line-height: 1.35;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0.2rem;
+  box-sizing: border-box;
+}
+.labels select {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  font-weight: 300;
+  line-height: 1.35;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0.2rem;
+  box-sizing: border-box;
+}
+.sub-btn {
+  text-align: center;
+}
+.sub-btn button {
+  background-color: #33a1fd;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 2px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+.forgot-div {
+  margin: 45px 0;
+}
+.forgot-div a {
+  color: #02527f;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  display: block;
+  margin: 10px 0;
+}
+.warning-div {
+  color: #856404;
+  background-color: #fff3cd;
+  padding: 25px;
+  border-radius: 3px;
+  border: 1px solid #ffeeba;
+}
+.warning-div p {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+.warning-div p span {
+  font-weight: 600;
+}
+.footer-logo {
+  width: 100px;
+}
+.footer-logo img {
+  width: 100%;
+}
+footer {
+  border-top: 1px solid rgb(221, 221, 221);
+  padding: 40px 0 20px;
+}
+.main-footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer-menu {
+  text-align: center;
+  width: 75%;
+}
+.footer-menu ul {
+  padding: 0;
+}
+.footer-menu ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 0 10px;
+}
+.footer-menu ul li a {
+  text-decoration: none;
+  color: #333;
+}
+@media only screen and (max-width: 767px) {
+  .footer-logo {
+    margin: 10px auto;
+  }
+  .footer-menu {
+    width: 100%;
+  }
+}
+
+.login-div {
+  max-width: 700px;
+  margin-bottom: 3rem !important;
+  min-height: 400px;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (max-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (max-width: 444px) {
+  .container {
+    max-width: 420px;
+  }
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "~ngx-bootstrap/datepicker/bs-datepicker";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

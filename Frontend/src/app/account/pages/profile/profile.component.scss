@@ -1,0 +1,43 @@
+.user-info h6 {
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px 10px;
+    margin-bottom: 20px;
+}
+.user-info span {
+    font-weight: 500;
+}
+.edit-btn {
+    text-align: center;
+}
+.edit-btn button {
+    background: #0276d4;
+    border: none;
+    color: #fff;
+    padding: 7px 30px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.btn-group {
+    button {
+        min-width: 120px;
+    }
+}
+
+.disble-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ced4da;
+    border-radius: 0.2rem;
+    padding: 5px;
+    background: gray;
+    input {
+        border: none;
+        background: transparent;
+    }
+    i {
+        cursor: pointer;
+    }
+}

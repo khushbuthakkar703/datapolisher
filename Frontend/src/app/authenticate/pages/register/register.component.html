@@ -1,0 +1,59 @@
+<app-header [show]="false"></app-header>
+<main>
+    <section>
+        <div class="login-div">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-header">
+                    <h6>Sign up to RND</h6>
+                </div>
+                <p class="required-fild"><span>*</span> Required</p>
+                <div class="labels">
+                    <label for="name">Username <span>*</span></label>
+                    <input type="text" tabindex="1" formControlName="name" name="name" id="name" autofocus />
+                    <div *ngIf="submitted && f.name.errors" class="error">
+                        <div *ngIf="f.name.errors.required">Name is required</div>
+                    </div>
+                </div>
+
+                <div class="labels">
+                    <label for="email">Email <span>*</span></label>
+                    <input type="email" formControlName="email" name="email" id="email" />
+                    <div *ngIf="submitted && f.email.errors" class="error">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+
+
+
+                <div class="labels">
+                    <label for="password">Password <span>*</span></label>
+                    <input type="password" formControlName="password" name="password" id="password" />
+                    <div *ngIf="submitted && f.password.errors" class="error">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.pattern">Please enter stronge password</div>
+                    </div>
+                </div>
+
+                <div class="labels">
+                    <label for="confirmpassword">Confirm Password <span>*</span></label>
+                    <input type="password" formControlName="confirmpassword" name="confirmpassword"
+                        id="confirmpassword" />
+                    <div *ngIf="submitted && f.confirmpassword.errors" class="error">
+                        <div *ngIf="f.confirmpassword.errors.required">Confirm Password is required</div>
+                        <div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>
+                    </div>
+                </div>
+
+
+                <div class="sub-btn">
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+            <div class="forgot-div">
+                <a href="/login">Already have account ?</a>
+            </div>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>

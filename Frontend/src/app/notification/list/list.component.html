@@ -1,0 +1,71 @@
+<app-header [show]="true"></app-header>
+<app-middle title="Notification" description=""></app-middle>
+
+
+<main>
+
+    <section>
+        <div class="container">
+            <div class="mt-5 mb-5 change-div">
+                <!-- <div style="padding:20px">
+                    <h1>Notifications</h1>
+                </div>
+                <div class="mb-5">
+                    <div
+                        style=" border: 1px solid #ccc; padding:20px;border-top-left-radius: 7px ;border-top-right-radius: 7px; border-bottom: 0;">
+                        <h2>Today</h2>
+                    </div>
+                    <div
+                        style=" border: 1px solid #ccc;padding:20px;border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;">
+                        <h4>No new notification</h4>
+                    </div>
+                </div> -->
+                <div>
+
+                    <div class="notification_main">
+                        <h2>Notifications</h2>
+                    </div>
+                    <div *ngIf="notification">
+
+                        <div *ngFor="let item of notification;let i=index" class="notification_show">
+                            <div class="col-1">
+
+                                <mat-icon>phone_iphone</mat-icon>
+
+                            </div>
+                            <div class="col-10">
+                                <h3>{{item.message}}
+                                </h3>
+                            </div>
+                            <div class="col-1 text-end">
+
+                                <mat-icon (click)="deletenotification(item)">close</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div *ngIf="!notification" class="notification_bottom">
+                    <h4>No new notification</h4>
+                </div>
+                <!-- <article class="leaderboard">
+                    <main class="leaderboard__profiles">
+                        <article class="leaderboard__profile" *ngFor="let item of notification;let i=index">
+
+                            <span class="leaderboard__name">{{i+1}}. {{item.message}}</span>
+                            <span class="leaderboard__value">
+                                <mat-icon>delete</mat-icon>
+                            </span>
+                        </article>
+
+
+                    </main>
+
+                </article> -->
+            </div>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>

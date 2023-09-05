@@ -1,0 +1,99 @@
+<app-header [show]="true"></app-header>
+<app-middle title="Profile" description="View or update your information"></app-middle>
+<main>
+    <section class="edit-profile py-5">
+        <div class="container">
+            <div class="w-50 mx-auto">
+                <h2 class="fw-light">User Information</h2>
+                <a class="d-block text-end " routerLink="/account/profile/changepassword">Change Password</a>
+                <div class="user-info">
+                    <h6 class="fw-light">Username: <span>{{ userdata.name }}</span></h6>
+                    <h6 class="fw-light">Name: <span>{{ userdata.Username }}</span></h6>
+                    <h6 class="fw-light">Title: <span>{{ userdata.Title }}</span></h6>
+                    <h6 class="fw-light">
+                        Email: <span>{{ userdata.email }}</span>
+                    </h6>
+                    <h6 class="fw-light">
+                        Work Phone:
+                        <span>{{ userdata.workphone }} </span>
+                    </h6>
+                    <h6 class="fw-light">
+                        Secondary Phone: <span class="fw-light">{{ userdata.SecondaryPhone }}</span>
+                    </h6>
+                    <h6 class="fw-light">
+                        <div class="labels ">
+                            <label>Api key<span></span></label>
+                            <div class="disble-div">
+
+                                <input type=" text" disabled #inputTarget [value]="userdata.apikey" />
+                                <i class="material-icons" (click)="copy()">content_copy</i>
+                            </div>
+                            <!-- <span class="material-icons-outlined">
+                                content_paste
+                            </span> -->
+                            <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon> -->
+                        </div>
+                    </h6>
+
+                </div>
+                <div class="edit-btn">
+                    <button>Edit</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container" class="d-none">
+            <div class="login-div mt-0">
+                <h2 class="fw-light">Edit User Information</h2>
+                <form>
+                    <p class="required-fild"><span>*</span> Required</p>
+                    <div class="labels">
+                        <label for="name">Username <span>*</span></label>
+                        <input type="text" name="text" id="name" tabindex="1" autofocus />
+                    </div>
+                    <div class="labels d-flex">
+                        <div class="col-5 me-2">
+                            <label for="name">First Name <span>*</span></label>
+                            <input type="text" name="text" id="name" tabindex="1" />
+                        </div>
+                        <div class="col-2 me-2">
+                            <label for="Middle">Middle Initial </label>
+                            <input type="text" name="text" id="Middle" tabindex="1" />
+                        </div>
+                        <div class="col-5">
+                            <label for="Middle">Last Name <span>*</span></label>
+                            <input type="text" name="text" id="Middle" tabindex="1" />
+                        </div>
+                    </div>
+                    <div class="labels">
+                        <label for="name">Title <span>*</span></label>
+                        <input type="text" name="text" id="name" tabindex="1" autofocus />
+                    </div>
+                    <div class="labels">
+                        <label for="name">Email <span>*</span></label>
+                        <input type="text" name="text" id="name" tabindex="1" autofocus />
+                    </div>
+                    <div class="labels">
+                        <label for="name">Work Phone <span>*</span></label>
+                        <input type="text" name="text" id="name" tabindex="1" autofocus />
+                    </div>
+                    <div class="labels">
+                        <label for="name">Secondary Phone<span></span></label>
+                        <input type="text" name="text" id="name" tabindex="1" autofocus />
+                    </div>
+
+                    <p class="text-center mt-4 mb-0">
+                        <span class="btn-group ">
+                            <button class="btn btn-primary" id="submitUserForm" type="submit">Save</button><button
+                                class="btn btn-secondary" id="cancelUserForm" type="button">Cancel</button>
+                        </span>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</main>
+<app-footer></app-footer>

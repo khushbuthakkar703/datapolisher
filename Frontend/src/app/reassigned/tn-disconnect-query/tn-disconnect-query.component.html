@@ -1,0 +1,98 @@
+<app-header [show]="true"></app-header>
+
+<app-middle title="Query Telephone Number Disconnect Date"
+    description="Enter up to 50 Telephone Numbers, Dates and Company IDs below or you can paste in data from CSV or XLSX in the first Telephone Number Field.">
+</app-middle>
+<main>
+    <section>
+        <div class="container">
+            <div class="mt-5 mb-5 change-div">
+                <div class="labels">
+                    <label for="name"><span>*</span> Required</label>
+                    <button class="btn btn-primary" type="button" (click)="addtelephone()">Add Telephone Number</button>
+                </div>
+                <div class="labels" *ngFor="let item of Telephonearray;let i=index">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="name">Telephone Number <span>*</span></label>
+                            <input onPaste="return false" type="text" name="Telephone" id="Telephone"
+                                (focus)="validationchange(item)" (keyup)="validationchange(item)"
+                                (keypress)="numberOnly($event,item.tn)" [(ngModel)]="item.tn" autofocus />
+                        </div>
+                        <div class="col-3">
+                            <label for="Date">Date <span>*</span></label>
+                            <input type="date" name="Date" datepicker id="Date" (focus)="validationchange(item)"
+                                (change)="validationchange(item)" [(ngModel)]="item.date" />
+                        </div>
+                        <div class="col-3">
+                            <label for="name">Company ID <span>*</span></label>
+                            <select [(ngModel)]="item.companyId" (focus)="validationchange(item)"
+                                (change)="validationchange(item)">
+                                <option disabled>select</option>
+                                <option value="C581698581" selected>C581698581</option>
+                            </select>
+                        </div>
+                        <div class="col-2 mt-4" *ngIf="Telephonearray && Telephonearray.length > 1">
+                            <button class="btn btn-secondary" name="remove" type="button"
+                                (click)="remove(i)">Remove</button>
+                        </div>
+
+                    </div>
+                    <h3 for="name" class="error"><span>{{item.message}}</span></h3>
+                </div>
+                <div class="text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-secondary m-auto p-30" type="button"
+                            (click)="clearfield()">Clear</button>
+                        <button class="btn btn-primary m-auto" type="button" (click)="submnitsearch()">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 mb-5 change-div" *ngIf="replaydata && replaydata.length > 0">
+                <h2> Query Results</h2>
+                <div class="example-container mat-elevation-z8">
+                    <mat-table [dataSource]="dataSource" matSort matTableExporter #exporter="matTableExporter">
+                        <ng-container matColumnDef="tn">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Telephone Number
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{ row['tn'] ? row['tn']: '-'}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="dateProvided">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Date Provided </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{ row['dateProvided'] ? row['dateProvided']: '-'}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="disconnected">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Response </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{ row['disconnected'] ? row['disconnected'] :'-'}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="companyId">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>Company Id </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{ row['companyId'] ? row['companyId']: '-'}} </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </mat-row>
+                    </mat-table>
+                    <mat-paginator [pageSizeOptions]="[10, 20, 100]">
+                    </mat-paginator>
+                </div>
+                <div class="labels">
+                    <!-- <h2>RND will not store these Query Results, so please download for your records:</h2> -->
+                    <p>RND will not store these Query Results, so please download for your records: <span
+                            style="display: block;"><button type="button" class="btn btn-link"
+                                style="font-weight: 300; padding: 0px; vertical-align: baseline;"
+                                (click)="exporter.exportTable('csv',{fileName:'QueryTNResults'})">CSV
+                                File</button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-loader" [fullScreen]="true">
+    <p style="color: white"> Please wait ... </p>
+</ngx-spinner>

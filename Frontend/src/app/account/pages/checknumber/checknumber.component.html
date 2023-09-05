@@ -1,0 +1,26 @@
+<app-header [show]="true"></app-header>
+<app-middle title="Phone Validation" description=""></app-middle>
+<main>
+    <section>
+        <div class="container">
+            <div class="mt-5 mb-5 change-div">
+                <div class="labels ">
+
+                    <form #f="ngForm" [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
+                        <ngx-intl-tel-input [cssClass]="'custom'" tabindex="1" autofocus
+                            [preferredCountries]="[CountryISO.UnitedStates, CountryISO.UnitedKingdom]"
+                            [enableAutoCountrySelect]="false" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                            [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                            [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.UnitedStates" maxLength="15"
+                            [phoneValidation]="true" name="phone" formControlName="phone"></ngx-intl-tel-input>
+                    </form>
+                </div>
+                <div class="sub-btn">
+                    <button type="submit" (click)="onSubmit()" tabindex="2">Check</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</main>
+<app-footer></app-footer>

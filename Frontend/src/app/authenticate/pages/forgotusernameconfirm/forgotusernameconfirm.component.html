@@ -1,0 +1,38 @@
+<app-header [show]="false"></app-header>
+<main>
+    <section>
+        <div class="container">
+            <div class="login-div">
+                <form [formGroup]="ForgotUserConfrim" (ngSubmit)="onSubmit()">
+                    <div class="form-header">
+                        <h6>Forgot username</h6>
+                    </div>
+
+                    <p class="required-fild"><span>*</span> Required</p>
+                    <div class="labels">
+                        <label for="Code">Code <span>*</span></label>
+                        <input type="text" tabindex="1" formControlName="code" name="code" id="code" autofocus />
+
+                        <div *ngIf="submitted && f.code.errors" class="error">
+                            <div *ngIf="f.code.errors.required">code is required</div>
+                        </div>
+                    </div>
+                    <div class="labels">
+                        <label for="name">User name <span>*</span></label>
+                        <input type="text" formControlName="name" name="name" id="name" />
+
+                        <div *ngIf="submitted && f.name.errors" class="error">
+                            <div *ngIf="f.name.errors.required">Username is required</div>
+                        </div>
+                    </div>
+
+                    <div class="sub-btn">
+                        <button type="submit" *ngIf="!buttonshow">Confirm</button>
+                        <button type="button" *ngIf="buttonshow" disabled>Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+<!--<app-footer></app-footer> -->

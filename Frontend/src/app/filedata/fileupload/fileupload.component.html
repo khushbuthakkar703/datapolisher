@@ -1,0 +1,146 @@
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
+
+<app-header [show]="true"></app-header>
+
+<app-middle title="File upload" description=""></app-middle>
+<main>
+
+    <section>
+        <div class="container">
+            <div class="mt-5 mb-5 change-div">
+                <div class="labels">
+                    <label for="name">Create file<span>*</span></label>
+                    <input type="button" name="button" data-bs-toggle="modal" data-bs-target="#filenameenter"
+                        value="Create file" />
+                </div>
+
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#filenameenter">
+                    Add file
+                </button> -->
+                <!-- <div class="custom-file">
+                    <input type="file" class="custom-file-input" placeholder="Email ,Firstname ,Lastname"
+                        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                        ID="fileInput" (change)="csvuplaod($event)">
+                    <label class="custom-file-label" #labelImport for="fileInput"> Choose
+                        file</label>
+                </div> -->
+                <div class="example-container mat-elevation-z8">
+
+                    <mat-table [dataSource]="dataSource" matSort>
+                        <ng-container matColumnDef="sr_no">
+                            <mat-header-cell *matHeaderCellDef> Srno
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.sr_no}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="file_name">
+                            <mat-header-cell *matHeaderCellDef> File name
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let row">{{row.file_name ? row['file_name']: '-'}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="company-id">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Company
+                            </mat-header-cell>
+
+                            <mat-cell *matCellDef="let row"> {{ row['company-id'] ? row['company-id']: '-'}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="file_tags">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>File tag </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{ row['file_tags'] ? row['file_tags']: '-'}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="file_status">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> File Status </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{ row['file_status'] ? row['file_status']: '-'}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Action">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Action </mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <mat-icon data-bs-toggle="modal" data-bs-target="#deletemodel"
+                                    (click)="deletefiledata(row)">delete</mat-icon>
+                                <mat-icon (click)="downloadfiles(row)">cloud_download</mat-icon>
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </mat-row>
+                    </mat-table>
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-loader" [fullScreen]="true">
+    <p style="color: white"> Please wait ... </p>
+</ngx-spinner>
+
+<div class="modal fade" id="filenameenter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">File Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="labels">
+                    <label for="name"> File Name<span></span></label>
+                    <input type="text" [(ngModel)]="filename" name="text" placeholder="Please enter file name"
+                        autocomplete="off" autofocus />
+                </div>
+                <div class="custom-file">
+
+                    <label for="name"> File Name<span>*</span></label>
+                    <input type="file" class="custom-file-input"
+                        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                        ID="fileInput" (change)="csvuplaod($event.target)">
+                    <label class="custom-file-label" #labelImport for="fileInput"> Select
+                        file</label>
+                </div>
+                <!-- <div class="labels">
+                    <label for="name"> File Tag<span></span></label>
+                    <input type="text" [(ngModel)]="filetag" name="text" placeholder="Please enter file tag name"
+                        autocomplete="off" autofocus />
+                </div>
+                <div class="labels">
+                    <label for="name"> File Folder<span></span></label>
+                    <input type="text" [(ngModel)]="foldername" name="text" placeholder="Please enter file folder name"
+                        autocomplete="off" autofocus />
+                </div> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" #closebutton class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="submitfile()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="deletemodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Delete</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                Are you sure you want to delete this file ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" #deleteclosebutton class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="deletefile()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>

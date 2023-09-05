@@ -1,0 +1,27 @@
+.main-home {
+    background: linear-gradient(0deg, rgba(0, 53, 99, 1) 17%, rgba(2, 80, 125, 1) 97%);
+    border-bottom: 6px solid rgb(245, 166, 35);
+    margin-top: 88px;
+}
+.home-div-section {
+    // display: flex;
+    // align-items: center;
+    // flex-wrap: wrap;
+    // justify-content: space-between;
+    // min-height: 120px;
+    display: flex;
+    justify-content: space-between;
+    min-height: 120 px;
+}
+.home-div-section h2 {
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1;
+    font-size: 2rem;
+    font-weight: 200;
+}
+.home-div-section span {
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+}

@@ -1,0 +1,30 @@
+<app-header [show]="false"></app-header>
+<main>
+    <section>
+        <div class="container">
+            <div class="login-div">
+                <form [formGroup]="ForgotUserForm" (ngSubmit)="onSubmit()">
+                    <div class="form-header">
+                        <h6>Forgot username</h6>
+                    </div>
+                    <p>Enter your email address to receive instructions to reset your username.</p>
+                    <p class="required-fild"><span>*</span> Required</p>
+                    <div class="labels">
+                        <label for="name">Email <span>*</span></label>
+                        <input type="email" formControlName="email" name="email" id="email" tabindex="1" autofocus />
+                        <div *ngIf="submitted && f.email.errors" class="error">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+
+                    <div class="sub-btn">
+                        <button type="submit" *ngIf="!buttonshow">Send Username</button>
+                        <button type="button" disabled *ngIf="buttonshow">Send Username</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>
